@@ -14,6 +14,18 @@ git submodule update --init --recursive
 
 This creates a `dep_setup/` directory inside your project.
 
+## Install Dependencies
+
+After adding and initializing the submodule, run the installer from the root of
+your project:
+
+```bash
+bash dep_setup/install/install_all.sh
+```
+
+The installer downloads and prepares the dependencies expected by
+`dep_setup/cmake/Dependencies.cmake`.
+
 ## Use from CMake
 
 In your top-level `CMakeLists.txt`, include the dependency configuration:
