@@ -8,6 +8,7 @@ Add this repository as a Git submodule in the root of the project that will use
 the dependencies:
 
 ```bash
+git add .gitmodules
 git submodule add https://github.com/victorliu-sq/dep_setup.git dep_setup
 git submodule update --init --recursive
 ```
