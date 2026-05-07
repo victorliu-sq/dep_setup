@@ -46,6 +46,22 @@ they should initialize submodules before configuring the build:
 git submodule update --init --recursive
 ```
 
+## Update dep_setup Later
+
+When this repository has new changes and you want to update the submodule in
+your project, run this from the root of your project:
+
+```bash
+git submodule update --remote --merge dep_setup
+```
+
+Then commit the updated submodule pointer in your project:
+
+```bash
+git add dep_setup
+git commit -m "Update dep_setup submodule"
+```
+
 ## Build Options
 
 `Dependencies.cmake` exposes backend options that can be set when configuring
