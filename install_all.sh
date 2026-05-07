@@ -2,8 +2,8 @@
 set -euo pipefail
 
 # --- Installation Config
-export INSTALLER_DIR="${INSTALLER_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
-export DEP_SETUP_DIR="${DEP_SETUP_DIR:-$(cd "${INSTALLER_DIR}/.." && pwd)}"
+export DEP_SETUP_DIR="${DEP_SETUP_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}"
+export INSTALLER_DIR="${INSTALLER_DIR:-${DEP_SETUP_DIR}/install}"
 export PROJECT_DIR="${PROJECT_DIR:-$(cd "${DEP_SETUP_DIR}/.." && pwd)}"
 export SCRIPTS_DIR="${SCRIPTS_DIR:-${PROJECT_DIR}/scripts}"
 export DEPS_DIR="${DEPS_DIR:-${PROJECT_DIR}/deps}"

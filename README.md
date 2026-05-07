@@ -20,7 +20,7 @@ After adding and initializing the submodule, run the installer from the root of
 your project:
 
 ```bash
-bash dep_setup/install/install_all.sh
+bash dep_setup/install_all.sh
 ```
 
 The installer downloads and prepares the dependencies expected by
