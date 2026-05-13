@@ -64,6 +64,9 @@ bash "${INSTALLER_DIR}/installer_nlohmann_json.sh"
 # --- Install google benchmark  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_rmm.sh"
 
+# --- Install Boost  ----------------------------------------------------
+bash "${INSTALLER_DIR}/installer_boost.sh"
+
 # --- Install Python Env ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_python.sh"
 
