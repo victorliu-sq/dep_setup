@@ -67,6 +67,9 @@ bash "${INSTALLER_DIR}/installer_rmm.sh"
 # --- Install Boost  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_boost.sh"
 
+# --- Install HdrHistogram  ----------------------------------------------------
+bash "${INSTALLER_DIR}/installer_hdr_histogram.sh"
+
 # --- Install Python Env ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_python.sh"
 
