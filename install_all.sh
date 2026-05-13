@@ -6,7 +6,7 @@ export DEP_SETUP_DIR="${DEP_SETUP_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && 
 export INSTALLER_DIR="${INSTALLER_DIR:-${DEP_SETUP_DIR}/install}"
 export PROJECT_DIR="${PROJECT_DIR:-$(cd "${DEP_SETUP_DIR}/.." && pwd)}"
 export SCRIPTS_DIR="${SCRIPTS_DIR:-${PROJECT_DIR}/scripts}"
-export DEPS_DIR="${DEPS_DIR:-${PROJECT_DIR}/deps}"
+export DEPS_DIR="${DEPS_DIR:-${DEP_SETUP_DIR}/deps}"
 export DEPS_TMP_DIR="${DEPS_TMP_DIR:-${DEPS_DIR}/tmp}"
 export CONDA_ENV_NAME="${CONDA_ENV_NAME:-rayjoin-env}"
 
@@ -56,18 +56,9 @@ bash "${INSTALLER_DIR}/installer_vma.sh"
 bash "${INSTALLER_DIR}/installer_gtest.sh"
 
 # --- Install google benchmark  ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_gbenchmark.sh"
+bash "${INSTALLER_DIR}/installer_gbenchmark.sh"
 
 bash "${INSTALLER_DIR}/installer_python.sh"
-
-# --- Install Ligra ----------------------------------------------------
-#bash "${INSTALLER_DIR}/install_ligra_openmp.sh" # Install Ligra
-
-# --- Install Gunrock ----------------------------------------------------
-#bash "${INSTALLER_DIR}/install_gunrock.sh" # Install Gunrock
-
-#export LD_LIBRARY_PATH="${DEPS_DIR}/lib:${PROJECT_DIR}/bin:${LD_LIBRARY_PATH:-}"
-#echo "[INFO] LD_LIBRARY_PATH set to: $LD_LIBRARY_PATH"
 
 # remove the tmp directory
 rm -rf "${DEPS_TMP_DIR}"

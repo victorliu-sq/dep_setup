@@ -1,9 +1,10 @@
 # ------------------------------------------------------------------
 # CMake modules
 # ------------------------------------------------------------------
-list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}")
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/deps")
-list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/deps/vulkansdk/x86_64")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/modules")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_LIST_DIR}/scripts")
+list(APPEND CMAKE_PREFIX_PATH "${CMAKE_SOURCE_DIR}/dep_setup/deps")
+list(APPEND CMAKE_PREFIX_PATH "${RAYJOIN_DEPS_DIR}/vulkansdk/x86_64")
 
 include(configure_build_type)
 include(CompileSlang)

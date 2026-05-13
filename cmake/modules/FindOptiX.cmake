@@ -51,7 +51,7 @@ if (WIN32)
   set(OptiX_INSTALL_DIR ${searched_OptiX_INSTALL_DIR} CACHE PATH "Path to OptiX installed location.")
 else ()
   #  set(OptiX_INSTALL_DIR $ENV{OptiX_INSTALL_DIR} CACHE PATH "Path to OptiX installed location.")
-  set(OptiX_INSTALL_DIR "${CMAKE_SOURCE_DIR}/deps/optix")
+  set(OptiX_INSTALL_DIR "${CMAKE_SOURCE_DIR}/dep_setup/deps/optix")
   #  message("OptiX_INSTALL_DIR is set to ${OptiX_INSTALL_DIR}")
 endif ()
 # The distribution contains both 32 and 64 bit libraries.  Adjust the library
@@ -192,4 +192,3 @@ macro(OptiX_check_same_path libA libB)
         set( optix_rpath ${_optix_rpath} ${_optixu_rpath} ${_optix_prime_rpath} )
         list(REMOVE_DUPLICATES optix_rpath)
         endif()
-
