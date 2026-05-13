@@ -58,6 +58,13 @@ bash "${INSTALLER_DIR}/installer_gtest.sh"
 # --- Install google benchmark  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_gbenchmark.sh"
 
+# --- Install google benchmark  ----------------------------------------------------
+bash "${INSTALLER_DIR}/installer_nlohmann_json.sh"
+
+# --- Install google benchmark  ----------------------------------------------------
+bash "${INSTALLER_DIR}/installer_rmm.sh"
+
+# --- Install Python Env ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_python.sh"
 
 # remove the tmp directory
