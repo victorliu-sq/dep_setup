@@ -1,0 +1,11 @@
+if (NOT DEFINED DEP_SETUP_DIR)
+  message(FATAL_ERROR "DEP_SETUP_DIR must be set before including add_deps.cmake")
+endif ()
+
+set(DEP_SETUP_CMAKE_DIR "${DEP_SETUP_DIR}/cmake")
+set(DEP_SETUP_DEPS_DIR "${DEP_SETUP_DIR}/deps")
+
+list(APPEND CMAKE_MODULE_PATH "${DEP_SETUP_CMAKE_DIR}/modules")
+list(APPEND CMAKE_MODULE_PATH "${DEP_SETUP_CMAKE_DIR}/scripts")
+list(APPEND CMAKE_PREFIX_PATH "${DEP_SETUP_DEPS_DIR}")
+list(APPEND CMAKE_PREFIX_PATH "${DEP_SETUP_DEPS_DIR}/vulkansdk/x86_64")
