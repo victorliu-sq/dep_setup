@@ -1,91 +1,81 @@
 # dep_setup
 
-Shared dependency setup for CMake projects.
+`dep_setup` provides vendored dependency paths and small CMake helper modules for projects in this repository.
 
-## Add to Your Project
-
-Add this repository as a Git submodule in the root of the project that will use
-the dependencies:
-
-```bash
-git submodule add https://github.com/victorliu-sq/dep_setup.git dep_setup
-git submodule update --init --recursive
-```
-
-This creates a `dep_setup/` directory inside your project.
-
-## Install Dependencies
-
-After adding and initializing the submodule, run the installer from the root of
-your project:
-
-```bash
-bash dep_setup/install_all.sh
-```
-
-The installer downloads and prepares the dependencies expected by
-`dep_setup/cmake/Dependencies.cmake`.
-
-## Use from CMake
-
-In your top-level `CMakeLists.txt`, include the dependency configuration:
+Start every project with the shared dependency path setup:
 
 ```cmake
-include(dep_setup/cmake/Dependencies.cmake)
+# ------------------------------------------------------------------
+# Shared dependency setup
+# ------------------------------------------------------------------
+set(DEP_SETUP_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dep_setup")
+include("${DEP_SETUP_DIR}/cmake/dep_paths.cmake")
 ```
 
-Put this before targets that depend on the packages configured by
-`Dependencies.cmake`.
+After that, use `find_package(...)` and `include(...)` only for the dependencies and helpers the project needs.
 
-Example:
+## General Dependencies
+
+Use normal CMake package discovery:
 
 ```cmake
-cmake_minimum_required(VERSION 3.20)
-project(MyProject LANGUAGES C CXX)
-
-include(dep_setup/cmake/Dependencies.cmake)
-
-add_executable(my_app main.cpp)
-target_link_libraries(my_app PRIVATE glog::glog gflags GTest::gtest)
+find_package(gflags REQUIRED)
+find_package(glog REQUIRED)
+find_package(GTest REQUIRED)
+find_package(rmm REQUIRED)
+find_package(nlohmann_json REQUIRED)
+find_package(Boost 1.85.0 CONFIG REQUIRED)
+find_package(ZLIB REQUIRED)
+find_package(HdrHistogram REQUIRED)
 ```
 
-## Initialize After Cloning
+Optional helper scripts:
 
-If someone clones your project after `dep_setup` has been added as a submodule,
-they should initialize submodules before configuring the build:
-
-```bash
-git submodule update --init --recursive
+```cmake
+include(configure_build_type)
+include("${DEP_SETUP_DIR}/cmake/scripts/build_output_dir.cmake")
 ```
 
-## Update dep_setup Later
+## CUDA And OptiX
 
-When this repository has new changes and you want to update the submodule in
-your project, run this from the root of your project:
+Enable CUDA and find the CUDA/OptiX packages:
 
-```bash
-git submodule update --remote --merge dep_setup
+```cmake
+enable_language(CUDA)
+find_package(CUDAToolkit REQUIRED)
+find_package(OptiX REQUIRED)
+message(STATUS "OptixDir: ${OptiX_INSTALL_DIR}")
 ```
 
-Then commit the updated submodule pointer in your project:
+For OptiX shader compilation helpers:
 
-```bash
-git add dep_setup
-git commit -m "Update dep_setup submodule"
+```cmake
+include(optix_compile_shaders)
 ```
 
-## Build Options
+This defines:
 
-`Dependencies.cmake` exposes backend options that can be set when configuring
-your project:
-
-```bash
-cmake -S . -B build -DBUILD_OPTIX_BACKEND=ON -DBUILD_VULKAN_BACKEND=ON
+```cmake
+OPTIX_COMPILE_SHADERS(<output_dir> <generated_files_var>)
 ```
 
-Disable a backend if your system does not have the required SDK or compiler:
+If you only need low-level CUDA module compilation, include:
 
-```bash
-cmake -S . -B build -DBUILD_OPTIX_BACKEND=OFF
-cmake -S . -B build -DBUILD_VULKAN_BACKEND=OFF
+```cmake
+include(nvcuda_compile_module)
+```
+
+## Vulkan
+
+Use Vulkan packages directly after `dep_paths.cmake`:
+
+```cmake
+find_package(Vulkan REQUIRED)
+find_package(VulkanMemoryAllocator REQUIRED)
+```
+
+If the project uses Slang shader helpers:
+
+```cmake
+include(CompileSlang)
 ```
