@@ -8,7 +8,7 @@ export PROJECT_DIR="${PROJECT_DIR:-$(cd "${DEP_SETUP_DIR}/.." && pwd)}"
 export SCRIPTS_DIR="${SCRIPTS_DIR:-${PROJECT_DIR}/scripts}"
 export DEPS_DIR="${DEPS_DIR:-${DEP_SETUP_DIR}/deps}"
 export DEPS_TMP_DIR="${DEPS_TMP_DIR:-${DEPS_DIR}/tmp}"
-export CONDA_ENV_NAME="${CONDA_ENV_NAME:-rayjoin-env}"
+export CONDA_ENV_NAME="${CONDA_ENV_NAME:-rt-benchmark-env}"
 
 if ! declare -F download >/dev/null 2>&1; then
   download() {
