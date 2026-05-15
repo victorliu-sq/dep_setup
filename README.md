@@ -61,7 +61,7 @@ Include helper scripts only when the project needs them:
 
 ```cmake
 include(configure_build_type)
-include("${DEP_SETUP_DIR}/cmake/scripts/build_output_dir.cmake")
+include(build_output_dir)
 ```
 
 ## CUDA And OptiX
@@ -70,6 +70,7 @@ For projects that build CUDA or OptiX targets, enable CUDA and find the CUDA/Opt
 
 ```cmake
 enable_language(CUDA)
+
 find_package(CUDAToolkit REQUIRED)
 find_package(OptiX REQUIRED)
 message(STATUS "OptixDir: ${OptiX_INSTALL_DIR}")
