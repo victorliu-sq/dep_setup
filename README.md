@@ -20,6 +20,9 @@ list(PREPEND CMAKE_PREFIX_PATH
 In each application `CMakeLists.txt`, reuse the benchmark-provided `BUILD_SUPPORT_DIR` when it is already available. If the application is configured on its own, fall back to the application-local `dep_setup` path:
 
 ```cmake
+# ------------------------------------------------------------------
+# Shared dependency setup
+# ------------------------------------------------------------------
 if(DEFINED BUILD_SUPPORT_DIR AND NOT "${BUILD_SUPPORT_DIR}" STREQUAL "")
   message(STATUS "BUILD_SUPPORT_DIR is already set to ${BUILD_SUPPORT_DIR}")
   message(STATUS "BUILD_SUPPORT_DIR is available at ${BUILD_SUPPORT_DIR}")
