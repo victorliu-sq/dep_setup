@@ -5,7 +5,7 @@
 In the top-level benchmark `CMakeLists.txt`, define the shared build support directory and prepend its CMake module, helper script, and package prefix paths:
 ```cmake
 # ------------------------------------------------------------------
-# JIAIXN: Shared dependency setup
+# JIAIXN: Benchmark Shared dependency setup
 # ------------------------------------------------------------------
 set(BUILD_SUPPORT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dep_setup")
 
@@ -25,7 +25,7 @@ In each application `CMakeLists.txt`, reuse the benchmark-provided `BUILD_SUPPOR
 
 ```cmake
 # ------------------------------------------------------------------
-# JIAXIN: Shared dependency setup
+# JIAXIN: Application Shared dependency setup
 # ------------------------------------------------------------------
 if(DEFINED BUILD_SUPPORT_DIR AND NOT "${BUILD_SUPPORT_DIR}" STREQUAL "")
   message(STATUS "BUILD_SUPPORT_DIR is already set to ${BUILD_SUPPORT_DIR}")
