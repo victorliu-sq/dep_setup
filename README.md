@@ -4,6 +4,9 @@
 
 In the top-level benchmark `CMakeLists.txt`, define the shared build support directory and prepend its CMake module, helper script, and package prefix paths:
 ```cmake
+# ------------------------------------------------------------------
+# Shared dependency setup
+# ------------------------------------------------------------------
 set(BUILD_SUPPORT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/dep_setup")
 
 list(PREPEND CMAKE_MODULE_PATH
@@ -15,6 +18,7 @@ list(PREPEND CMAKE_PREFIX_PATH
     "${BUILD_SUPPORT_DIR}/deps"
     "${BUILD_SUPPORT_DIR}/deps/vulkansdk/x86_64"
 )
+# ------------------------------------------------------------------
 ```
 
 In each application `CMakeLists.txt`, reuse the benchmark-provided `BUILD_SUPPORT_DIR` when it is already available. If the application is configured on its own, fall back to the application-local `dep_setup` path:
@@ -40,6 +44,7 @@ list(PREPEND CMAKE_PREFIX_PATH
     "${BUILD_SUPPORT_DIR}/deps"
     "${BUILD_SUPPORT_DIR}/deps/vulkansdk/x86_64"
 )
+# ------------------------------------------------------------------
 ```
 When an application is added through the top-level benchmark project, `BUILD_SUPPORT_DIR` points to the shared repository dependency setup. When an application is configured independently, it uses its own `dep_setup` location.
 
