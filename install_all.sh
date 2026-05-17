@@ -30,45 +30,17 @@ mkdir -p \
   "${DEPS_DIR}" \
   "${DEPS_TMP_DIR}"
 
-# --- Install optix ----------------------------------------------------
-# bash + path (single argument) + subsequent arguments
-#bash "${INSTALLER_DIR}/installer_optix.sh"
-
 # --- Install gflags  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_gflags.sh"
 
 # --- Install glog  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_glog.sh"
 
-# --- Install slang ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_slang.sh"
-
-# --- Install Vulkan ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_vulkan.sh"
-
-# --- Install LBVH
-#bash "${INSTALLER_DIR}/installer_lbvh.sh"
-
-# --- Install VMA
-#bash "${INSTALLER_DIR}/installer_vma.sh"
-
 # --- Install gtest  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_gtest.sh"
 
 # --- Install google benchmark  ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_gbenchmark.sh"
-
-# --- Install google benchmark  ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_nlohmann_json.sh"
-
-# --- Install google benchmark  ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_rmm.sh"
-
-# --- Install Boost  ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_boost.sh"
-
-# --- Install HdrHistogram  ----------------------------------------------------
-#bash "${INSTALLER_DIR}/installer_hdr_histogram.sh"
 
 # --- Install Python Env ----------------------------------------------------
 bash "${INSTALLER_DIR}/installer_python.sh"
