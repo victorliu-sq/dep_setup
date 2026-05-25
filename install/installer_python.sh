@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PY_REQ="${INSTALLER_DIR}/requirements.txt"
-CONDA_ENV_NAME="${CONDA_ENV_NAME:-rt-benchmark-env}"
+CONDA_ENV_NAME="${CONDA_ENV_NAME:-rtbm-env}"
 
 echo "[INSTALL] Install Python Environment ..."
 #if [[ ! $(conda info --env | grep xb-env) ]]; then
